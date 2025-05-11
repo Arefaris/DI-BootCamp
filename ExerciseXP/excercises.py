@@ -1,9 +1,6 @@
 #ex 1
 
-print("Hello world")
-print("Hello world")
-print("Hello world")
-print("Hello world")
+print("Hello world \n" * 4)
 
 #ex 2
 
