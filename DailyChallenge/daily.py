@@ -19,5 +19,6 @@ for char in user_string:
 user_list = []
 for char in user_string:
     user_list.append(char)
-    random.shuffle(user_list)
-    print(user_list)
+random.shuffle(user_list)
+result = ", ".join(user_list)
+print(result)
