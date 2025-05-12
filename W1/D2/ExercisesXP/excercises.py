@@ -87,7 +87,7 @@ if user_choose in list_of_fav_fruits:
 else:
     print("You chose a new fruit. I hope you enjoy it!")
 
-#ex 8
+# ex 8
 topping = input("What pizza toppings do you want? Type `q` to quit ").lower()
 list_of_toppings = []
 base_price_of_pizza = 10
