@@ -22,7 +22,8 @@ for line in line_list:
 print(matrix)
 
 
-# step2
+# step 2
+
 # iterating over columns and rows
 for column in range(len(matrix[0])):
     for row in range(len(matrix)):
