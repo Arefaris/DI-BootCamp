@@ -41,10 +41,10 @@ def play():
         
 def check_for_tie(game_board):
     tie = 0
+    
     for column in game_board:
         if " " not in column:
             tie += 1
-
     if tie == 3:
         return True
     else:
@@ -57,12 +57,11 @@ def display_board(game_board):
        
 
 def player_input(column, row, symbol):
+    
     ### check if space is empty
     if game_board[column][row] == " ":
         game_board[column][row] = symbol
-    else:
-        if symbol == "O":
-            
+    else: 
         print("not empty")
 
 def check_win(game_board, player):
