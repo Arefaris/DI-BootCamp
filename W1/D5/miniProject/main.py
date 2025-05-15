@@ -17,11 +17,11 @@ def play():
     
     while win != True:
         player = []
+        
         if turn == "CPU":
             player_symbol = "O"
-            player.extend([random.randint(0,2), random.randint(0, 2), player_symbol])
-            player_input(player)
-            
+            player_input(random.randint(0,2), random.randint(0, 2), player_symbol)
+            turn == "PLAYER"
         else: 
             user_column = int(input("column "))
             user_row = int(input("row "))
@@ -31,8 +31,8 @@ def play():
                 user_column -= 1
                 user_row -= 1
                 player_symbol = "X"
-                player.extend([user_column, user_row, player_symbol])
-                player_input(player)
+                player_input(user_column, user_row, player_symbol)
+                turn == "CPU"
             else:
                 print("Your input is out of range")
                 
@@ -56,15 +56,13 @@ def display_board(game_board):
         print("—" * (len(column) + 2)) 
        
 
-def player_input(player):
-    column = player[0]
-    row = player[1]
-    symbol = player[2]
-    
+def player_input(column, row, symbol):
     ### check if space is empty
     if game_board[column][row] == " ":
         game_board[column][row] = symbol
     else:
+        if symbol == "O":
+            
         print("not empty")
 
 def check_win(game_board, player):
@@ -94,7 +92,7 @@ def check_win(game_board, player):
                     
                     
             #if every char in current column is the same, its a win condition
-            if game_board[column][0] == game_board[column][1] == game_board[column][2]:
+            if game_board[column][0] == symbol and game_board[column][1] == symbol and game_board[column][2] == symbol:
                 print("You won column win")
                 return True
             
