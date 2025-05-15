@@ -1,6 +1,6 @@
-game_board = [["A", "X", "A"], 
-              ["A", "X", "O"], 
-              ["X", "X", "X"]]
+game_board = [["X", "A", "X"], 
+              ["A", "A", "A"], 
+              ["X", "A", "A"]]
 
 diagonal_condition = []
 vertical_condition = []
@@ -17,6 +17,7 @@ horizontal_condition = []
 # resul > 3
 
 def main():
+    
     print("Welcome to tic - tac - toe\nPlease make your move by entering column and row numbers")
     display_board(game_board)
     
@@ -52,43 +53,49 @@ def player_input(player):
 
 
 def check_win(game_board, player):
-        #print(game_board)
-        index = 0
-        done = False
-
-        for col_index, column in enumerate(game_board):
-         
-            if (column[0] == column[1] == column[2]):
-                print("Congrats, you won! (horizontal)")
-                done = True
-                
-           
-            diagonal_condition.append(column[col_index])
-            if len(diagonal_condition) == 3:
-                result = ''.join(diagonal_condition)
-
-                if result == "XXX":
-                    print("Congrats, you won! (diagonal)")
+        current_row = []
+        diagonal_track_left = []
+        diagonal_track_right = []
+    
+        #for loop in range 3 (lenght of our columns)
+        for column in range(3):
+            
+            diagonal_track_left.append(game_board[column][column])
+            diagonal_track_right.append(game_board[column][2 - column])
+            
+            
+            if len(diagonal_track_left) == 3:
+                if "XXX" == "".join(diagonal_track_left):
+                    print("You won diagonal win")
                     break
-
-            for row_index, row in enumerate(game_board[col_index]):
-
-                vertical_condition.append(row)
-                print(row)
-                print("...")
-
-                if len(vertical_condition) == 3:
-                    result = ''.join(vertical_condition)
-
-                    if result == "XXX":
-                        print("Congrats, you won! (vertical)")
-                        done = True
-                        vertical_condition.clear()
+                elif len(diagonal_track_right) == 3:
+                    if "XXX" == "".join(diagonal_track_right):
+                        print("You won diagonal win")
                         break
-                    elif result:
-                        vertical_condition.clear()
-            if done:
+                    
+                    
+            #if every char in current column is the same, its a win condition
+            if game_board[column][0] == game_board[column][1] == game_board[column][2]:
+                print("You won column win")
                 break
+            
+            #iterating through rows. and saving every char in current row to a list
+            for row_index, row in enumerate(game_board):
+                    current_row.append(row[column])
+
+
+            #checking if win condition is met
+            if "XXX" == "".join(current_row):
+                  print("You won! (row win)")
+                  current_row.clear()
+                  return True
+            else:
+                current_row.clear()
+             
+
+             
+        
+               
 
             
 
