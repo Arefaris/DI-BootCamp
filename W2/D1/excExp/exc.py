@@ -119,6 +119,7 @@ class Zoo():
                 sorted_dict[animal[0]].append(animal)
             else:
                 sorted_dict[animal[0]] = [animal]
+                
         self.sorted_animals = sorted_dict
         print(sorted_dict)
         return self
