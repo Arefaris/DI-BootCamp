@@ -1,4 +1,5 @@
 import math
+
 class Pagination():
     def __init__(self, items = None, page_size = 10):
         self.items = items
@@ -16,11 +17,8 @@ class Pagination():
         #multiplying current index on page size to display page
         start = self.current_idx * self.page_size
         return self.items[start:start + self.page_size]
-       
-      
             
     def go_to_page(self, page_num):
-        self.current_idx = page_num - 1
         if page_num < 1 or page_num > self.total:
             raise ValueError("Page is out of range")
         self.current_idx = page_num - 1
@@ -35,9 +33,11 @@ class Pagination():
     def next_page(self):
         #if we are on the last page we stay
         if self.current_idx + 1 >= self.total:
-            return self.get_visible_items()
-        # going for the next page
-        return self.go_to_page(self.current_idx + 2)
+            self.get_visible_items()
+        #going for the next page
+        else:
+            self.go_to_page(self.current_idx + 2)
+        return self
     
     def previous_page(self):
         if self.current_idx == 0:
@@ -58,10 +58,10 @@ p = Pagination(alphabetList, 4)
 print(p.get_visible_items())
 # ['a', 'b', 'c', 'd']
 
-p.next_page()
+p.next_page().next_page()
 print(p.get_visible_items())
 # ['e', 'f', 'g', 'h']
-
+"""
 p.last_page()
 print(p.get_visible_items())
 # ['y', 'z']
@@ -72,3 +72,7 @@ print(p.current_idx + 1)
 
 #p.go_to_page(0)
 # Raises ValueError
+
+
+p.go_to_page(3)
+print(p)"""
