@@ -1,15 +1,22 @@
-star = "*"
- for (i=0; i < 6; i++){
-     console.log(star)
-     star = star + "*"
- }
+let pattern = "";
+let stars = "";
 
-for (i=0; i < 6; i++){
-    console.log(star)
-    for (i=0; i < 5; i++){
-        star = star + "*"
-        console.log(star)
-    }
-        
-    
+for (let i = 1; i <= 6; i++) {
+  stars += "* ";
+  pattern += stars.trim() + "\n";
 }
+
+console.log(pattern);
+
+
+let pattern2 = "";
+
+for (let i = 1; i <= 6; i++) {
+  let line = "";
+  for (let j = 1; j <= i; j++) {
+    line += "* ";
+  }
+  pattern2 += line.trim() + "\n";
+}
+
+console.log(pattern2);
