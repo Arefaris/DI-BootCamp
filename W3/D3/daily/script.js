@@ -47,3 +47,4 @@ const stories = [
 
 return stories[Math.floor(Math.random() * 10)]
 }
+
