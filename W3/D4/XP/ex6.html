@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1></h1>
+    <script>
+        ((children, name, location, job_title)=>{
+        document.querySelector("h1").textContent = `You will be a ${job_title} in ${location}, and married to ${name} with ${children} kids`
+        })(4, "bob", "Tel Aviv", "developer")
+    </script>
+</body>
+</html>
