@@ -1,0 +1,54 @@
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: lightcoral;
+    color: whitesmoke;
+    font-family: "Roboto", sans-serif;
+
+}
+
+
+
+form input {
+  width: 300px;
+  border: none;
+}
+
+button {
+    font-family: "Roboto", sans-serif;
+    border: none;
+    background-color: white;
+    color: blue;
+}
+form {
+    background-color: white;
+    display: flex;
+    border: solid;
+    width: 330px;
+    height: 40px;
+}
+
+.task {
+   display: flex;
+   align-items: center;
+}
+
+ 
+
+.list-tasks {
+    margin-top: 15px;
+    border: solid;
+    width: 300px;
+    padding: 15px;
+   
+    
+}
+
+hr {
+    border-color: aqua;
+}
