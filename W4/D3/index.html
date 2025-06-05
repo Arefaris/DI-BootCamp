@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>D3</title>
+    <script src="script.js" defer async></script>
+</head>
+<body>
+    <h2>HTTP Methods, Forms, JSON & Exeptions</h2>
+    <h2>Form with GET</h2>
+    <form method="GET">
+        <input name="username" placeholder="Username..."/>
+        <input type="password" name="pass" placeholder="pass..."/>
+        <input type="submit"/>
+    </form>
+    <h2>Form with POST</h2>
+    <form method="POST">
+        <input name="username" placeholder="Username..."/>
+        <input type="password" name="pass" placeholder="pass..."/>
+        <input type="submit"/>
+    </form>
+    <h2>Get User JSON</h2>
+    <form method="GET" action="https://jsonplaceholder.typicode.com/users">
+        <input type="submit">
+    </form>
+    <h2>Get One User JSON</h2>
+    <form method="GET" action="https://jsonplaceholder.typicode.com/users">
+        <input name="id" type="submit">
+    </form>
+    <h2>Get One User JSON with hidden input</h2>
+    <form method="GET" action="https://jsonplaceholder.typicode.com/users">
+        <input name="id" type="hidden" value="7">
+        <input type="submit">
+    </form>
+    <h2>Search on google</h2>
+    <form method="GET" action="https://google.com/search">
+        <input name="q" type="text">
+        <input type="submit">
+    </form>
+    <h2>Add a post</h2>
+    <form method="POST" action="https://jsonplaceholder.typicode.com/posts">
+        <input name="title" placeholder="Title.." /><br/>
+        <input name="body" placeholder="Body..."><br/>
+        <input name="userId" placeholder="User Id..."><br/>
+        <input type="submit" value="Add post"/>
+    </form>
+    <form method="POST" action="https://users-18kl.onrender.com/user">
+        <input name="name" placeholder="Name..."><br/>
+        <input name="username" placeholder="User Id..."><br/>
+        <input name="email" placeholder="Email"><br/>
+        <input type="submit" value="Add post"/>
+    </form>
+</body>
+</html>
