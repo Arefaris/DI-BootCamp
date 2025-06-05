@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>xp</title>
+</head>
+<body>  
+        <!--EX1 sent data will appear in the url-->
+    <form method="GET" action="./index.html">
+        <label for="userName">Name</label>
+        <input name="userName" placeholder="name">
+        <label for="userComments">Comments</label>
+        <textarea name="userComments"></textarea>
+        <input type="submit">
+    </form>
+
+       <!--EX2 sent data will appear in FORM DATA we can see it in the network tab under payload-->
+    <form method="POST" action="./index.html">
+        <label for="userName">Name</label>
+        <input name="userName" placeholder="name">
+        <label for="userComments">Comments</label>
+        <textarea name="userComments"></textarea>
+        <input type="submit">
+    </form>
+
+    <script>
+        const marioGame = {
+  detail : "An amazing game!",
+  characters : {
+      mario : {
+        description:"Small and jumpy. Likes princesses.",
+        height: 10,
+        weight: 3,
+        speed: 12,
+      },
+      bowser : {
+        description: "Big and green, Hates princesses.",
+        height: 16,
+        weight: 6,
+        speed: 4,
+      },
+      princessPeach : {
+        description: "Beautiful princess.",
+        height: 12,
+        weight: 2,
+        speed: 2,
+      }
+  },
+}
+
+let marioJson = JSON.stringify(marioGame)
+// nested objects became a jsonString
+console.log(marioJson)
+
+console.log(JSON.stringify(marioGame, null, 2))
+
+
+    </script>
+</body>
+</html>
