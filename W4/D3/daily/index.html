@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form method="GET">
+        <input type="text" name="name">
+        <input type="text" name="lastname">
+        <input type="submit">
+    </form>
+</body>
+    <script>
+        let form = document.forms[0]
+        let h3 = document.createElement("h3")
+        
+        form.addEventListener("submit", (event)=>{
+            event.preventDefault()
+            let obj = {
+            name: form.name.value,
+            lastname: form.lastname.value
+        }
+            h3.textContent = JSON.stringify(obj)
+            document.body.appendChild(h3)
+        })
+    </script>
+</html>
