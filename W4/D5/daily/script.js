@@ -20,6 +20,7 @@ form.addEventListener("submit", (event)=>{
     
     
 })
+
 const dellALlBtn = document.createElement("button")
 dellALlBtn.textContent = "DELETE ALL"
 document.body.appendChild(dellALlBtn)
