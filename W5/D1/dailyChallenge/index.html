@@ -5,26 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script src="script.js" defer async></script>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Currency Converter</h1>
-    <h2>From: </h2>
-    <select>
-        <option>1</option>
-        <option>2</option>
-        <option>3</option>
-    </select>
-    <h2>To: </h2>
-    <select>
-        <option>1</option>
-        <option>2</option>
-        <option>3</option>
-    </select>
-    <h2>Amount: </h2>
-    <div>
-        <input type="text">
-        <button>Convert</button>
-    </div>
-    <p>1231 ILS</p>
+    <div class="container">
+        <h1>Currency Converter</h1>
+        <h2>From: </h2>
+        <select class="convert-from">
+        </select>
+        <h2>To: </h2>
+        <select class="convert-to">
+        </select>
+        <h2>Amount: </h2>
+        <div>
+            <input class="amount-input" type="text">
+            <button class="convert-btn">Convert</button>
+            <button class="switch-btn">Switch</button>
+        </div>
+        <p class="result"></p>
+</div>
 </body>
 </html>

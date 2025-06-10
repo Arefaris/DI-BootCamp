@@ -1,9 +1,74 @@
+const API = "api_key"
+const from = document.querySelector(".convert-from")
+const to = document.querySelector(".convert-to")
+const convertBtn = document.querySelector(".convert-btn")
+const amountInput = document.querySelector(".amount-input")
+const resultElement = document.querySelector(".result")
+const switchBtn = document.querySelector(".switch-btn")
+let currencyFrom
+let currencyTo
+let currencicesArr 
+let amount
+let currensiesPairs = {}
 
 const getCodes = async()=>{
-    const API = "373a4fe4e12877bf20e69aa6"
+    
     let response = await fetch(`https://v6.exchangerate-api.com/v6/${API}/codes`)
+
     if (response.status !== 200){
         throw new Error(`Something went wrong ${response.status}`)
     } 
 
+    let data = await response.json()
+    currensiesPairs = data.supported_codes
+    renderDOM(currensiesPairs)
 }
+
+convertBtn.addEventListener("click", async()=>{
+    amount = amountInput.value
+    amount = Number(amount)
+    
+    if (amount === NaN){
+        throw new Error("Not a number")
+    }
+
+    currencyFrom = currensiesPairs[from.selectedIndex][0]
+    currencyTo = currensiesPairs[to.selectedIndex][0]
+    currencicesArr = [currencyFrom, currencyTo]
+    const result = await convert(currencicesArr[0], currencicesArr[1], amount)
+    resultElement.textContent = result + " " + currencyTo
+})
+
+
+switchBtn.addEventListener("click", async()=>{
+    currencicesArr.reverse() 
+    const result = await convert(currencicesArr[0], currencicesArr[1], amount)
+    resultElement.textContent = result + " " + currencicesArr[1]
+})
+
+
+const convert = async(from, to, amount)=>{
+
+    response = await fetch(`https://v6.exchangerate-api.com/v6/${API}/pair/${from}/${to}/${amount}`)
+
+    if (response.status !== 200){
+        throw new Error(`Something went wrong ${response.status}`)
+    } 
+
+    data = await response.json()
+    let result = data.conversion_result
+    return result
+}
+
+const renderDOM = async(arr)=>{
+    arr.forEach(el => {
+        const option = document.createElement('option');
+        const option2 = document.createElement('option');
+        option.textContent = `${el[0]} - ${el[1]}`;
+        option2.textContent = `${el[0]} - ${el[1]}`;
+        from.appendChild(option);
+        to.appendChild(option2)
+});
+}
+
+getCodes()
