@@ -1,4 +1,4 @@
-const API = "api_key"
+const API = ""
 const from = document.querySelector(".convert-from")
 const to = document.querySelector(".convert-to")
 const convertBtn = document.querySelector(".convert-btn")
