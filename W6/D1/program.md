@@ -30,7 +30,14 @@ A **relational database** organizes data into tables that can be related to each
 
 ## Data Types
 
-- **Numeric**: `integer`, `decimal`, `smallint`, `serial`, etc.
-- **String**: `varchar(size)`, `text`, etc.
-- **Date/Time**: `timestamp`, `date`, etc.
-- **Boolean**: `true` or `false`
+- **Numeric**: `integer`, `decimal`, `smallint`, `serial`, etc.  
+  *Used for numbers. `integer` is for whole numbers, `decimal` for precise decimals, `smallint` for smaller ranges, and `serial` auto-increments values (often used for IDs).*
+
+- **String**: `varchar(size)`, `text`, etc.  
+  *Used for text. `varchar(size)` limits the number of characters, while `text` allows for long, unlimited-length strings.*
+
+- **Date/Time**: `timestamp`, `date`, etc.  
+  *Used for storing dates and times. `timestamp` includes both date and time, while `date` stores only the date.*
+
+- **Boolean**: `true` or `false`  
+  *Used for logical values, representing either true or false.*
