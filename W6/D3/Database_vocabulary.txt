@@ -1,0 +1,54 @@
+DAY 1
+- What is a database - storage data in an organized way
+- What is a relational database - tables can be related 
+- What is SQL - Structured Query Language
+- What Postgres - RDBMS (Relational Database Management System) tool
+- What PGadmin - GUI
+
+Tables structure
+- a field = the "label" of a column 
+- a record or a row = one of the entries/ a row
+- a column = a vertical entity contains all the associated info for that field
+- a NULL value = absence of a value (different than zero or undefined)
+
+Data Types
+- numeric - integer, decimal, smallint, serial, and more...
+- string - varchar(size), text, and more...
+- Date/time - timestamp, date, and more...
+- Boolean: true or false
+
+- HOW TO
+- create a database
+- create a table: defining data types and constrains
+- retrieve data (select, where, limit, offset, order by, returning)
+- update data or table
+- delete data or table (data using where)
+- alter: change the structure of the table (add a column, change a data type, change the name of a field)
+
+
+DAY2
+primary key = index of the row (int, unique, not null, serial)
+foreign key = a column that creates a relation between two tables
+joins = are different ways of displaying related data 
+default join = INNER JOIN 
+LEFT JOIN
+RIGHT JOIN
+FULL JOIN
+
+
+DAY3
+ON DELETE AND ON UPDATE OPTIONS:
+-restrict
+-cascade
+-no action (default)
+-set default
+-set null
+
+RELATIONSHIPS:
+-one to one (teudat zeut table and passaport table)
+-one to many (orders table and items table)
+-many to many (movies and actors table) - it is represented by a cross-reference table
+
+
+
+
