@@ -1,0 +1,51 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-family: "Roboto", sans-serif;
+    font-optical-sizing: auto;
+    background-color: #e5e0ce;
+}
+
+.title {
+    background: #ed649b;
+    background: radial-gradient(circle, rgba(237, 100, 155, 1) 0%, rgba(148, 187, 233, 1) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.emoji {
+    font-size: 80px;
+    margin-bottom: 25px;
+}
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 5px;
+}
+
+form {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.answer-btn {
+    font-family: inherit;
+    background-color: #ffffff;
+    padding: 10px 25px;
+    border-radius: 10px;
+}
+
+.answer-btn:hover {
+    background-color: #ece9e9;
+}
+
+.right-guess {
+    color: green;
+}
+
+.wrong-guess {
+    color: darkred;
+}
