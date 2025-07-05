@@ -11,8 +11,15 @@ interface emoji {
     name: string
 }
 
-let correctAnswer: string
+interface userInLeader {
+    name: string,
+    score: number,
+    answer?: string
+}
+
 let score: number = 0
+
+let liderBoard: userInLeader[] = []
 
 const shuffle = (arr: string[])=> {
     let shuffled = arr
@@ -38,38 +45,88 @@ const getAnswer = (arr: emoji[]): emoji => {
     return correctAnswer
 }
 
-app.get("/emojis", (req: Request, res: Response) => {
+app.post("/adduser", (req: Request, res: Response)=>{
+   const {name} = req.body
 
-    const answerArray = getAnswer(emojis)
-    const fakes = getFake(fakeEmojiNames)
-
-    fakes.push(answerArray.name)
-
-    correctAnswer = answerArray.name
-
-    res.json({
-        emoji: answerArray.emoji,
-        guesses: shuffle(fakes)
-    })
-
+   if (!name) {
+        res.status(400).json({message: "Bad Request: Name was not provided"})
+   }else {
+        liderBoard.push({
+        name: name,
+        score: 0
+   })
+        res.status(200).json({message: "All good"})
+   }
+   
 })
 
+app.get("/getleaders", (req: Request, res: Response) => {
+    liderBoard.sort((a, b) => b.score - a.score)
+    // filtering response to not include the answer in code
 
-app.post("/emojis", (req: Request, res: Response)=>{
-  
+    res.json(liderBoard.map((user)=> {
+        return {
+            name: user.name,
+            score: user.score
+        }
+    }))
+})
+
+app.post("/start", (req: Request, res: Response) => {
     if (!req.body){
          res.status(400).json({message: "Bad Request: Body was not provided"})
     }else {
-        let {guess} = req.body
+        let {name} = req.body
+
+        if (!name) {
+            res.status(400).json({message: "Bad Request: Name was not provided"})
+        }else {
+            const answerArray = getAnswer(emojis)
+            const fakes = getFake(fakeEmojiNames)
+            fakes.push(answerArray.name)
+
+            liderBoard.forEach((user) => {
+                    if(user.name === name){
+                        user.answer = answerArray.name
+                    }})
+
+            res.json({
+                emoji: answerArray.emoji,
+                guesses: shuffle(fakes)
+            })
+        }
+       
+
+}})
+
+
+app.post("/emojis", (req: Request, res: Response)=>{
+    
+    if (!req.body){
+         res.status(400).json({message: "Bad Request: Body was not provided"})
+    }else {
+        let {guess, name} = req.body
         guess = guess.toLowerCase()
 
-        if(!guess) {
-            res.status(400).json({message: "Bad Request: Guess was not provided"})
+        if(!guess || !name) {
+            res.status(400).json({message: "Bad Request: Guess or name was not provided"})
         } else {
+            let correctAnswer
+            // ugly but works
+            liderBoard.forEach((user) => {
+                    if(user.name === name){
+                        correctAnswer = user.answer
+                    }})
 
             if (guess === correctAnswer) {
 
-                score++
+                liderBoard.forEach((user) => {
+                    if(user.name === name){
+                        user.score = user.score + 1
+                        score = user.score
+                    }})
+
+                console.log(liderBoard)   
                 res.send({
                     correct: true,
                     score: score,
@@ -78,7 +135,12 @@ app.post("/emojis", (req: Request, res: Response)=>{
 
             }else {
 
-                score = 0
+                liderBoard.forEach((user) => {
+                    if(user.name === name){
+                        user.score = 0
+                        score = user.score
+                    }})
+                    
                 res.send({
                     correct: false,
                     score: score,

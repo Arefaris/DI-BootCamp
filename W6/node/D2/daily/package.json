@@ -4,7 +4,7 @@
   "main": "index.js",
   "scripts": {
     "serv": "ts-node server.ts",
-    "dev": "tsc src/index.ts --outDir public/",
+    "dev": "tsc src/index.ts --outDir public/play/ && tsc src/home.ts --outDir public/ && tsc src/leader.ts --outDir public/leaderboard",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",

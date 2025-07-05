@@ -8,6 +8,7 @@ body {
     background-color: #e5e0ce;
 }
 
+
 .title {
     background: #ed649b;
     background: radial-gradient(circle, rgba(237, 100, 155, 1) 0%, rgba(148, 187, 233, 1) 100%);
@@ -24,38 +25,34 @@ body {
     gap: 5px;
 }
 
-form {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
+header {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  gap: 100px;
 }
 
-.play {
-    font-family: inherit;
-    background-color: #ffffff;
-    padding: 10px 25px;
-    border-radius: 10px;
+.leader-list {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 50px;
+  text-align: center;
 }
 
-.play:hover {
-    background-color: #ece9e9;
+.user-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  gap: 100px;
+  text-align: center;
+  border: solid;
+  padding: 15px 25px;
 }
 
-/* From Uiverse.io by Maximinodotpy */ 
-.inputGroup {
-  font-family: inherit;
-  margin: 1em 0 1em 0; 
-}
+.user-name, .user-score {
 
-.inputGroup input {
-  font-size: 100%;
-  padding: 0.8em;
-  outline: none;
-  border: 2px solid rgb(200, 200, 200);
-  background-color: transparent;
-  border-radius: 20px;
-}
-
-.inputGroup :is(input:focus, input:valid) {
-  border-color: #ed649b;
+  min-width: 60px;
 }

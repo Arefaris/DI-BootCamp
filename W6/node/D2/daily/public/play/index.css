@@ -15,7 +15,10 @@ body {
     background-clip: text;
     -webkit-text-fill-color: transparent;
 }
-
+.emoji {
+    font-size: 80px;
+    margin-bottom: 25px;
+}
 .container {
     display: flex;
     justify-content: center;
@@ -24,38 +27,31 @@ body {
     gap: 5px;
 }
 
-form {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
+a {
+  position: absolute;
+  left: 10px;
+  top: 10px;
 }
 
-.play {
+form {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.answer-btn {
     font-family: inherit;
     background-color: #ffffff;
     padding: 10px 25px;
     border-radius: 10px;
 }
 
-.play:hover {
+.answer-btn:hover {
     background-color: #ece9e9;
 }
 
-/* From Uiverse.io by Maximinodotpy */ 
-.inputGroup {
-  font-family: inherit;
-  margin: 1em 0 1em 0; 
+.right-guess {
+    color: green;
 }
 
-.inputGroup input {
-  font-size: 100%;
-  padding: 0.8em;
-  outline: none;
-  border: 2px solid rgb(200, 200, 200);
-  background-color: transparent;
-  border-radius: 20px;
-}
-
-.inputGroup :is(input:focus, input:valid) {
-  border-color: #ed649b;
+.wrong-guess {
+    color: darkred;
 }

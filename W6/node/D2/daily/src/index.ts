@@ -3,7 +3,7 @@ const buttons = document.querySelectorAll(".answer-btn")
 const form = document.forms[0] as HTMLFormElement
 const score = document.querySelector(".score") as HTMLDivElement
 const result = document.querySelector(".result") as HTMLDivElement
-
+const userName = localStorage.getItem("name");
 interface serverResponse {
     emoji: string,
     guesses: string[]
@@ -16,7 +16,14 @@ interface serverResponsePost {
 }
 
 const getEmoji = async () =>{
-    const response = await fetch("http://localhost:5000/emojis")
+    const response = await fetch("http://localhost:5000/start", {
+        method:"POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({name: userName}),
+    })
+    
     const data: serverResponse = await response.json()
     return data
 }
@@ -33,12 +40,13 @@ const render = async () => {
 }
 
 const sendGuess = async (word: string)=> {
+
    const response = await fetch("http://localhost:5000/emojis", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
         },
-        body: JSON.stringify({guess: word}),
+        body: JSON.stringify({guess: word, name: userName}),
 
     })
     const data: serverResponsePost = await response.json()

@@ -40,11 +40,18 @@ var buttons = document.querySelectorAll(".answer-btn");
 var form = document.forms[0];
 var score = document.querySelector(".score");
 var result = document.querySelector(".result");
+var userName = localStorage.getItem("name");
 var getEmoji = function () { return __awaiter(_this, void 0, void 0, function () {
     var response, data;
     return __generator(this, function (_a) {
         switch (_a.label) {
-            case 0: return [4 /*yield*/, fetch("http://localhost:5000/emojis")];
+            case 0: return [4 /*yield*/, fetch("http://localhost:5000/start", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({ name: userName }),
+                })];
             case 1:
                 response = _a.sent();
                 return [4 /*yield*/, response.json()];
@@ -79,7 +86,7 @@ var sendGuess = function (word) { return __awaiter(_this, void 0, void 0, functi
                     headers: {
                         "Content-Type": "application/json"
                     },
-                    body: JSON.stringify({ guess: word }),
+                    body: JSON.stringify({ guess: word, name: userName }),
                 })];
             case 1:
                 response = _a.sent();
