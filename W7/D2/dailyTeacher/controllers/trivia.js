@@ -1,0 +1,1 @@
+import {triviaQuestion} from '../config/trivia.js'
