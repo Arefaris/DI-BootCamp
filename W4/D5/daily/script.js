@@ -42,7 +42,7 @@ const renderDOM = (url, id)=>{
     })
 
     dellALlBtn.addEventListener("click", ()=>{
-        document.querySelector(".allImages").remove()
+        document.querySelectorAll(".allImages").forEach(image=>image.remove())
     })
 
     image.src = url
