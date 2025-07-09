@@ -3,13 +3,15 @@ import { createUser, login, getUsers, getOneUser, upUser} from "../models/userMo
 
 // POST
 export const registerUser = async (req: Request, res: Response)=>{
-    const {username, password} = req.body
+    const {firstname, lastname, email, username, password} = req.body
 
     if(!username || !password){
         res.status(500).json({message: "Please provide username and password"})
+    }else if (!firstname || !lastname || !email) {
+         res.status(500).json({message: "Please provide personal data"})
     }
 
-    const user = await createUser(username, password)
+    const user = await createUser(firstname, lastname, email, username, password)
     res.status(user.status).json(user)
 }
 
@@ -41,12 +43,16 @@ export const getUser = async (req: Request, res: Response)=>{
 // PUT
 export const updateUser = async (req: Request, res: Response)=>{
     const {id} = req.params
-    const {username, password} = req.body
+   
 
-    if(!username || !password || !id){
-        res.status(500).json({message: "Please provide username and password and correct id"})
+    const {firstname, lastname, email, username, password} = req.body
+
+    if(!username || !password){
+        res.status(500).json({message: "Please provide username and password"})
+    }else if (!firstname || !lastname || !email) {
+         res.status(500).json({message: "Please provide personal data"})
     }
 
-    const user = await upUser(id, username, password)
+    const user = await upUser(id, firstname, lastname, email, username, password)
     res.status(user.status).json(user)
 }

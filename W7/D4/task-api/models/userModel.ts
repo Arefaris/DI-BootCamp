@@ -1,20 +1,15 @@
 import {db} from "../config/neonDB.ts"
 import bcrypt from "bcrypt"
 
-type user = {
-    id: number,
-    username: string,
-    password: string
-}
 
-export const createUser = async (username: string, password: string)=>{
+export const createUser = async (firstname: string, lastname: string, email: string, username: string, password: string)=>{
     const trx = await db.transaction()
 
     try {
-        let user: user
-        [user] = await trx("users")
-        .insert({username: username.toLowerCase()})
-        .returning(["id", "username", "id"])
+        
+        const [user] = await trx("users")
+        .insert({firstname, lastname, email: email.toLowerCase(), username: username.toLowerCase()})
+        .returning(["id", "firstname", "lastname", "email", "username"])
 
         //hashing password before inserting
         const hashPassword = await bcrypt.hash(password + "", 10);
@@ -45,8 +40,8 @@ export const login = async(username: string, password: string)=>{
 
         const trx = await db.transaction()
 
-        let user: user
-        [user] = await trx("users")
+        
+        const [user] = await trx("users")
         .select("users.username", "hashpsw.password")
         .where({username: username.toLowerCase()})
         .join("hashpsw", "users.id", "=", "hashpsw.user_id")
@@ -74,10 +69,13 @@ export const getUsers = async ()=>{
     try{
         const user = await db("users")
         .select(
-            "id",
+            "id", 
+            "firstname", 
+            "lastname", 
+            "email", 
             "username"
         )
-        .returning(["id", "username"])
+        .returning(["id", "firstname", "lastname", "email", "username"])
         return {message: user, status: 200}
 
     }catch(error){
@@ -90,11 +88,14 @@ export const getOneUser = async (id: string)=>{
     try{
         const user = await db("users")
         .select(
-            "id",
+            "id", 
+            "firstname", 
+            "lastname", 
+            "email", 
             "username"
         )
         .where({id})
-        .returning(["id", "username"])
+        .returning(["id", "firstname", "lastname", "email", "username"])
 
         if(user.length === 0){
             return {message: "User not found", status: 404}
@@ -109,7 +110,7 @@ export const getOneUser = async (id: string)=>{
     }   
 }
 
-export const upUser = async(id: string, username: string, password: string)=>{
+export const upUser = async(id: string, firstname: string, lastname: string, email: string, username: string, password: string)=>{
     const trx = await db.transaction()
     
     try{
@@ -118,10 +119,14 @@ export const upUser = async(id: string, username: string, password: string)=>{
         .where({id})
         .update(
             {
+                firstname,
+                lastname, 
+                email,
                 username
+
             }
         )
-        .returning(["id", "username"])
+        .returning(["id", "firstname", "lastname", "email", "username"])
 
         const hashPassword = await bcrypt.hash(password + "", 10);
 
