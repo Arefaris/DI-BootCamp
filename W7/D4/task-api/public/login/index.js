@@ -35,30 +35,24 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 var _this = this;
-var registerForm = document.querySelector("form");
-var result = document.querySelector(".result");
-registerForm.addEventListener("submit", function (event) { return __awaiter(_this, void 0, void 0, function () {
-    var elements, firstname, lastName, email, username, password, response, data;
+var loginForm = document.querySelector("form");
+var logiNresult = document.querySelector(".result");
+loginForm.addEventListener("submit", function (event) { return __awaiter(_this, void 0, void 0, function () {
+    var elements, login, password, response, data;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
                 event.preventDefault();
-                elements = registerForm.elements;
-                firstname = elements.namedItem("name");
-                lastName = elements.namedItem("lastName");
-                email = elements.namedItem("email");
-                username = elements.namedItem("username");
+                elements = loginForm.elements;
+                login = elements.namedItem("login");
                 password = elements.namedItem("password");
-                return [4 /*yield*/, fetch("http://localhost:5000/api/register", {
+                return [4 /*yield*/, fetch("http://localhost:5000/api/login", {
                         method: "POST",
                         headers: {
                             "Content-Type": "application/json",
                         },
                         body: JSON.stringify({
-                            firstname: firstname.value,
-                            lastname: lastName.value,
-                            email: email.value,
-                            username: username.value,
+                            username: login.value,
                             password: password.value
                         })
                     })];
@@ -68,13 +62,16 @@ registerForm.addEventListener("submit", function (event) { return __awaiter(_thi
             case 2:
                 data = _a.sent();
                 if (data.status == 200) {
-                    result.textContent = data.message;
+                    logiNresult.textContent = data.message;
                 }
-                else if (data.status == 409) {
-                    result.textContent = "Username already exists";
+                else if (data.status == 401) {
+                    logiNresult.textContent = data.message;
+                }
+                else if (data.status == 404) {
+                    logiNresult.textContent = data.message;
                 }
                 else {
-                    result.textContent = "Something went wrong. Server responded with status: " + data.status;
+                    logiNresult.textContent = "Something went wrong. Server responded with status: " + data.status;
                 }
                 return [2 /*return*/];
         }

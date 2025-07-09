@@ -50,12 +50,12 @@ export const login = async(username: string, password: string)=>{
     if(user){
         const result = await bcrypt.compare(password, user.password)
         if(result){
-            return {message: "login succefull", status: 200}
+            return {message: `Hi ${username} welcome back`, status: 200}
         }else{
             return {message: "Wrong login or password", status: 401}
         }
     }else{
-        return {message: "Username is not registered", status: 401}
+        return {message: "Username is not registered", status: 404}
     }
     
     }catch (error: any){

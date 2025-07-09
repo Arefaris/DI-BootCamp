@@ -4,7 +4,7 @@ import { createUser, login, getUsers, getOneUser, upUser} from "../models/userMo
 // POST
 export const registerUser = async (req: Request, res: Response)=>{
     const {firstname, lastname, email, username, password} = req.body
-
+    console.log(firstname, lastname, email, username, password)
     if(!username || !password){
         res.status(500).json({message: "Please provide username and password"})
     }else if (!firstname || !lastname || !email) {
