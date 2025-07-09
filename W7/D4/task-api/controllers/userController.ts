@@ -1,5 +1,5 @@
 import { Request, Response } from "express"
-import { createUser, login} from "../models/userModel.ts"
+import { createUser, login, getUsers, getOneUser, upUser} from "../models/userModel.ts"
 
 // POST
 export const registerUser = async (req: Request, res: Response)=>{
@@ -22,20 +22,31 @@ export const loginUser = async (req: Request, res: Response)=>{
     }
 
     const user = await login(username, password)
-    res.send(user)
+    res.status(user.status).json(user)
 }
 
 // GET
-export const getAllUsers = (req: Request, res: Response)=>{
-    res.send("all users")
+export const getAllUsers = async (req: Request, res: Response)=>{
+    const users = await getUsers()
+    res.status(users.status).json(users)
 }
 
 // GET
-export const getUser = (req: Request, res: Response)=>{
-    res.send("one user")
+export const getUser = async (req: Request, res: Response)=>{
+    const {id} = req.params
+    const user = await getOneUser(id)
+    res.status(user.status).json(user)
 }
 
 // PUT
-export const updateUser = (req: Request, res: Response)=>{
-    res.send("Update user")
+export const updateUser = async (req: Request, res: Response)=>{
+    const {id} = req.params
+    const {username, password} = req.body
+
+    if(!username || !password || !id){
+        res.status(500).json({message: "Please provide username and password and correct id"})
+    }
+
+    const user = await upUser(id, username, password)
+    res.status(user.status).json(user)
 }
