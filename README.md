@@ -2,10 +2,6 @@
 
 A comprehensive full-stack development bootcamp covering Python, web development, and modern frameworks.
 
-## Course Overview
-
-This 8-week intensive bootcamp covers the essential skills needed for full-stack development, progressing from Python fundamentals to modern web development with React.
-
 ## Weekly Breakdown
 
 ### [Week 1: Python Basics](./Week-01-Python-Basics/)
@@ -48,54 +44,9 @@ This 8-week intensive bootcamp covers the essential skills needed for full-stack
 - **Topics**: React components, state management, hooks
 - **Key Skills**: Component-based architecture, modern web apps
 
-## Learning Path
-
-```
-Python Fundamentals → OOP & File Handling → JavaScript Fundamentals
-                                                    ↓
-React Development ← Backend Development ← Database & Node.js ← Advanced JavaScript
-                                                                    ↓
-                                                        TypeScript Development
-```
-
-## Skills Acquired
-
-### Programming Languages
-- **Python**: Advanced proficiency with OOP, functional programming
-- **JavaScript**: ES6+, DOM manipulation, asynchronous programming
-- **SQL**: Database queries, joins, optimization
-
-### Frameworks & Libraries
-- **React**: Component-based development, hooks, state management
-- **Express.js**: RESTful API development
-- **Node.js**: Server-side JavaScript
-
-### Tools & Technologies
-- **Git**: Version control and collaboration
-- **Databases**: SQL, database design, ORM concepts
-- **Web Technologies**: HTML5, CSS3, responsive design
-- **APIs**: RESTful services, HTTP requests
-
-### Development Practices
-- **Testing**: Unit testing, test-driven development
-- **Documentation**: Code documentation, project README files
-- **Code Quality**: Clean code principles, refactoring
-- **Project Management**: Planning, organization, portfolio development
-
 ## Project Structure
 
 Each week contains:
 - **README.md**: Detailed learning objectives and topics covered
 - **Original-Files/**: All original code and exercises from that week
 - **Daily structure**: Organized by days with exercises and challenges
-
-## Getting Started
-
-1. Navigate to any week folder to see what was covered
-2. Check the README.md in each week for detailed learning objectives
-3. Explore the Original-Files folder for hands-on code examples
-4. Follow the progression from Week 1 to Week 8 for the complete learning journey
-
-## Contact & Progress
-
-This repository serves as a comprehensive record of the bootcamp journey, showcasing progression from basic programming concepts to full-stack development capabilities.
