@@ -1,0 +1,22 @@
+.content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;   
+}
+
+.info {
+    max-width: 600px;
+    padding: 10px;
+}
+
+.icon {
+    padding-top: 20px;
+    color: #fb8500;
+    font-size: 80px;
+}
+
+.backColor {
+    background-color: beige;
+    color: black;
+}
