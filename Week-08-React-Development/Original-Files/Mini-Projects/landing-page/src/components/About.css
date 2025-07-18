@@ -18,5 +18,25 @@
 
 .backColor {
     background-color: beige;
-    color: black;
+    color: rgb(27, 27, 27);
 }
+
+
+
+@media (width >= 750px) {
+  .content {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: center;
+    gap: 35px;
+  }
+
+  .info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 300px;
+  }
+}
+
