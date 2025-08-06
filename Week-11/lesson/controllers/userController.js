@@ -87,5 +87,37 @@ module.exports = {
         }catch (error){
             console.log(error)
         }
+    },
+
+    logOutUser: (req, res) => {
+        res.clearCookie("token");
+        req.cookies["token"] = null
+        delete req.cookies["token"]
+        req.user = null
+
+        //if you put token in db, set null in db
+        
+        res.sendStatus(200)
+    },
+
+    verifyAuth: (req, res) => {
+        const {userid, email} = req.user
+        const {ACCES_TOKEN_SECRET} = process.env
+
+        const newToken = jwt.sign({userid, email}, ACCES_TOKEN_SECRET, {
+            expiresIn: "60s"
+        })
+
+        res.cookie("token", newToken, {
+            maxAge: 60 * 1000,
+            httpOnly: true
+        })
+
+        res.status(200).json({
+            message: "new token",
+            user: {userid, email},
+            token: newToken
+        })
+
     }
 }
